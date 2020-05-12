@@ -1,0 +1,12 @@
+<% module_namespacing do -%>
+class <%= class_name %>Mailer < ApplicationMailer
+<% actions.each do |action| -%>
+
+  def <%= action %>(<%= class_name.downcase %>)
+    @<%= class_name.downcase %> = <%= class_name.downcase %>
+    mail to: <%= class_name.downcase %>.email, subject: 'お問い合わせありがとうございます'
+  end
+
+<% end -%>
+end
+<% end -%>

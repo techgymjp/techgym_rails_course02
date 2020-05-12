@@ -1,0 +1,6 @@
+<h1><%%= <%= singular_name.camelize %>.model_name.human %>編集</h1>
+
+<%%= render 'form', <%= singular_name %>: @<%= singular_name %> %>
+
+<%%= link_to '表示', [:<%= class_path[0] %>, @<%= singular_name %>], class: "btn btn-secondary" %>
+<%%= link_to '戻る', <%= index_helper %>_path, class: "btn btn-secondary" %>

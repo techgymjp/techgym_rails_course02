@@ -1,0 +1,66 @@
+<% if namespaced? -%>
+require_dependency "<%= namespaced_path %>/application_controller"
+
+<% end -%>
+<% module_namespacing do -%>
+<% super_path = class_path.present? ? class_path[0].camelize + "Controller" : "ApplicationController" -%>
+class <%= controller_class_name %>Controller < <%= super_path %>
+  before_action :set_<%= singular_name %>, only: [:show, :update, :destroy]
+
+  # GET <%= route_url %>
+  def index
+    @search = <%= singular_name.camelize %>.active.search(search_params)
+    @<%= plural_name %> = @search.result.page(params[:page])
+    render json: <%= "@#{plural_name}" %>
+  end
+
+  # GET <%= route_url %>/1
+  def show
+    render json: <%= "@#{singular_name}" %>
+  end
+
+  # POST <%= route_url %>
+  def create
+    @<%= singular_name %> = <%= orm_class.build(singular_name.camelize, "#{singular_name}_params") %>
+
+    if @<%= singular_name %>.save
+      render json: <%= "@#{singular_name}" %>, status: :created, location: <%= "@#{singular_name}" %>
+    else
+      render json: <%= "@#{singular_name}.errors" %>, status: :unprocessable_entity
+    end
+  end
+
+  # PATCH/PUT <%= route_url %>/1
+  def update
+    if @<%= singular_name %>.update(<%= singular_name %>_params)
+      render json: <%= "@#{singular_name}" %>
+    else
+      render json: <%= "@#{singular_name}.errors" %>, status: :unprocessable_entity
+    end
+  end
+
+  # DELETE <%= route_url %>/1
+  def destroy
+    @<%= singular_name %>.destroy
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_<%= singular_name %>
+      @<%= singular_name %> = <%= orm_class.find(singular_name.camelize, "params[:id]") %>
+    end
+
+    def search_params
+      params.fetch(:q, {}).permit(:id_eq, :created_at_between_month)
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def <%= "#{singular_name}_params" %>
+      <%- if attributes_names.empty? -%>
+      params.fetch(:<%= singular_name %>, {})
+      <%- else -%>
+      params.require(:<%= singular_name %>).permit(<%= attributes_names.map { |name| ":#{name}" }.join(', ') %>)
+      <%- end -%>
+    end
+end
+<% end -%>

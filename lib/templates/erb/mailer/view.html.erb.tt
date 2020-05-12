@@ -1,0 +1,17 @@
+<p>
+お問い合わせいただきありがとうございます。<br />
+2営業日以内に担当者からご連絡いたします。
+</p>
+
+<p>
+お問い合わせ内容<br />
+　件名： <%%= @<%= class_name.downcase %>.title_i18n %><br />
+　氏名： <%%= @contact.name %><br />
+　内容：<br />
+<%%= sanitize(simple_format(@<%= class_name.downcase %>.content.gsub(/\r\n|\r|\n/, "<br>")), tags: %w(br)) %>
+</p>
+
+<p>
+※ このメールは、送信専用メールアドレスから配信されています。<br />
+</p>
+

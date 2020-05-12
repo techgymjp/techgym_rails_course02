@@ -1,0 +1,20 @@
+<h1><%%= <%= singular_name.camelize %>.model_name.human %>情報 表示</h1>
+
+
+<table class="table table-striped">
+  <tbody>
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+   <tr>
+      <td><%%= t <%= singular_name.camelize %>.human_attribute_name(:<%= attribute.column_name %>) %></td>
+<% if attribute.type == :enum -%>
+      <td><%%= @<%= singular_name %>.<%= attribute.column_name %>_i18n %></td>
+<% else %>
+      <td><%%= @<%= singular_name %>.<%= attribute.column_name %> %></td>
+<% end %>
+    </tr>
+<% end -%>
+  </tbody>
+</table>
+
+<%%= link_to '編集', edit_<%= singular_table_name %>_path(@<%= singular_name %>), class: "btn btn-primary" %>
+<%%= link_to '戻る', <%= index_helper %>_path, class: "btn btn-secondary" %>

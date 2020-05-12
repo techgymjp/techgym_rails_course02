@@ -1,0 +1,60 @@
+<% if namespaced? -%>
+require_dependency "<%= namespaced_path %>/application_controller"
+
+<% end -%>
+<% super_path = class_path.present? ? class_path[0].camelize + "Controller" : "ApplicationController" -%>
+<% module_namespacing do -%>
+class <%= controller_class_name %>Controller < <%= super_path %>
+  before_action :set_<%= singular_name %>, only: [:show, :edit, :update, :destroy]
+
+  def index
+    @<%= plural_name %> = <%= singular_name.camelize %>.all
+  end
+
+  def show
+  end
+
+  def new
+    @<%= singular_name %> = <%= orm_class.build(singular_name.camelize) %>
+  end
+
+  def edit
+  end
+
+  def create
+    @<%= singular_name %> = <%= orm_class.build(singular_name.camelize, "#{singular_name}_params") %>
+
+    if @<%= singular_name %>.save
+      redirect_to [:<%= class_path[0] %>, @<%= singular_name %>], notice: "#{<%= singular_name.camelize %>.model_name.human}の作成に成功しました。"
+    else
+      render :new
+    end
+  end
+
+  def update
+    if @<%= singular_name %>.update(<%= singular_name %>_params)
+      redirect_to [:<%= class_path[0] %>, @<%= singular_name %>], notice: "#{<%= singular_name.camelize %>.model_name.human}の更新に成功しました。"
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @<%= singular_name %>.destroy
+    redirect_to <%= index_helper %>_path, notice: "#{<%= singular_name.camelize %>.model_name.human}の削除に成功しました。"
+  end
+
+  private
+    def set_<%= singular_name %>
+      @<%= singular_name %> = <%= orm_class.find(singular_name.camelize, "params[:id]") %>
+    end
+
+    def <%= "#{singular_name}_params" %>
+      <%- if attributes_names.empty? -%>
+      params.fetch(:<%= singular_name %>, {})
+      <%- else -%>
+      params.require(:<%= singular_name %>).permit(<%= attributes_names.map { |name| ":#{name}" }.join(', ') %>)
+      <%- end -%>
+    end
+end
+<% end -%>

@@ -1,0 +1,41 @@
+<%%= form_with(model: [:<%= class_path[0] %>, <%= singular_name %>], local: true) do |f| %>
+  <%% if <%= singular_name %>.errors.any? %>
+    <div class="alert alert-danger alert-dismissible">
+      <h2><%%= <%= singular_name %>.errors.count %> つのエラーがあります。</h2>
+
+      <ul>
+      <%% <%= singular_name %>.errors.full_messages.each do |message| %>
+        <li><%%= message %></li>
+      <%% end %>
+      </ul>
+    </div>
+  <%% end %>
+
+<% attributes.each do |attribute| -%>
+
+<% if attribute.password_digest? -%>
+  <div class="form-group">
+    <%%= f.label :password %>
+    <%%= f.password_field :password, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%%= f.label :password_confirmation %>
+    <%%= f.password_field :password_confirmation, class: "form-control" %>
+  </div>
+<% elsif attribute.type == :enum -%>
+    <div class="form-group">
+      <%%= f.label :<%= attribute.column_name %> %>
+      <%%= f.select :<%= attribute.column_name %>, <%= singular_name.camelize %>.<%= attribute.column_name.pluralize %>_i18n.invert, {}, class: "form-control" %>
+    </div>
+<% else -%>
+    <div class="form-group">
+      <%%= f.label :<%= attribute.column_name %> %>
+      <%%= f.<%= attribute.field_type %> :<%= attribute.column_name %>, class: "form-control" %>
+    </div>
+<% end -%>
+
+<% end -%>
+
+<%%= f.submit "送信", class: "btn btn-success" %>
+<%% end %>
