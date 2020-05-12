@@ -1,0 +1,58 @@
+<%= form_with(model: work, local: true) do |f| %>
+  <% if work.errors.any? %>
+    <div class="alert alert-danger alert-dismissible">
+      <h2><%= work.errors.count %> つのエラーがあります。</h2>
+
+      <ul>
+      <% work.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+    <div class="form-group">
+      <%= f.label :site_type %>
+      <%= f.select :site_type, Work.site_types_i18n.invert, {}, class: "form-control" %>
+    </div>
+
+
+    <div class="form-group">
+      <%= f.label :url %>
+      <%= f.text_field :url, class: "form-control" %>
+    </div>
+
+
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+
+
+    <div class="form-group">
+      <%= f.label :reward_min %>
+      <%= f.number_field :reward_min, class: "form-control" %>
+    </div>
+
+
+    <div class="form-group">
+      <%= f.label :reward_max %>
+      <%= f.number_field :reward_max, class: "form-control" %>
+    </div>
+
+
+    <div class="form-group">
+      <%= f.label :detail %>
+      <%= f.text_area :detail, class: "form-control" %>
+    </div>
+
+
+    <div class="form-group">
+      <%= f.label :expired_at %>
+      <%= f.date_select :expired_at, class: "form-control" %>
+    </div>
+
+
+<%= f.submit "送信", class: "btn btn-success" %>
+<% end %>

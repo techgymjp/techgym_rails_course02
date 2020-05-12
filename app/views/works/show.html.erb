@@ -1,0 +1,52 @@
+<h1><%= Work.model_name.human %>情報 表示</h1>
+
+
+<table class="table table-striped">
+  <tbody>
+   <tr>
+      <td><%= t Work.human_attribute_name(:site_type) %></td>
+
+      <td><%= @work.site_type_i18n %></td>
+
+    </tr>
+   <tr>
+      <td><%= t Work.human_attribute_name(:url) %></td>
+
+      <td><%= link_to @work.url, @work.url, target: "_blank"%></td>
+
+    </tr>
+   <tr>
+      <td><%= t Work.human_attribute_name(:title) %></td>
+
+      <td><%= @work.title %></td>
+
+    </tr>
+   <tr>
+      <td><%= t Work.human_attribute_name(:reward_min) %></td>
+
+      <td><%= @work.reward_min %></td>
+
+    </tr>
+   <tr>
+      <td><%= t Work.human_attribute_name(:reward_max) %></td>
+
+      <td><%= @work.reward_max %></td>
+
+    </tr>
+   <tr>
+      <td><%= t Work.human_attribute_name(:detail) %></td>
+
+      <td><%= sanitize(simple_format(@work.detail.gsub(/\r\n|\r|\n/, "<br>")), tags: %w(br)) %></td>
+
+    </tr>
+   <tr>
+      <td><%= t Work.human_attribute_name(:expired_at) %></td>
+
+      <td><%= @work.expired_at %></td>
+
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to '編集', edit_work_path(@work), class: "btn btn-primary" %>
+<%= link_to '戻る', works_path, class: "btn btn-secondary" %>

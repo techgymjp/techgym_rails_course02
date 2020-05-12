@@ -1,0 +1,6 @@
+<h1><%= Work.model_name.human %>編集</h1>
+
+<%= render 'form', work: @work %>
+
+<%= link_to '表示', @work, class: "btn btn-secondary" %>
+<%= link_to '戻る', works_path, class: "btn btn-secondary" %>

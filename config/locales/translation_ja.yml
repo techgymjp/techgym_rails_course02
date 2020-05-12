@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    models:
+      work: 案件  #g
+
+    attributes:
+      work:
+        detail: 詳細  #g
+        expired_at: 期限日  #g
+        reward_max: 報酬(最大)  #g
+        reward_min: 報酬(最小)  #g
+        site_type: タイプ  #g
+        title: タイトル  #g
+        url: URL  #g

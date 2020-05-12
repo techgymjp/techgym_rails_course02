@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CrawlerApp</title>
+    <title>案件管理 サンプル</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,10 @@
   </head>
 
   <body>
-    <%= yield %>
+    <main class="d-flex justify-content-center pt-5">
+      <div class="col-10">
+        <%= yield %>
+      </div>
+    </main>
   </body>
 </html>
