@@ -1,7 +1,7 @@
 module ScrapingWork
 
   def self.sample_function
-    p "do sample function"
+    p "モジュールが正しく読み込まれています。"
   end
 
   def self.get_work_doc(url)
