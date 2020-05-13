@@ -7,6 +7,6 @@ namespace :scraping do
     ScrapingWork.sample_function
     url = "https://crowdworks.jp/public/jobs/1035766"
     doc = ScrapingWork.get_work_doc(url)
-    # p doc.at('//*[@id="job_offer_detail"]//h1/text()').text.strip
+    p doc.at('//*[@id="job_offer_detail"]//h1/text()').text.strip
   end
 end
