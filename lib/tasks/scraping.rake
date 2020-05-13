@@ -8,5 +8,7 @@ namespace :scraping do
     url = "https://crowdworks.jp/public/jobs/1035766"
     doc = ScrapingWork.get_work_doc(url)
     p doc.at('//*[@id="job_offer_detail"]//h1/text()').text.strip
+    work_hash = ScrapingWork.fetch_work(url, doc)
+    Work.create!(work_hash)
   end
 end
