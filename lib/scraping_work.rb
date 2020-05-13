@@ -6,7 +6,7 @@ module ScrapingWork
 
   def self.get_work_doc(url)
     f = OpenURI.open_uri(url, { read_timeout: 300})
-    file = f.read
+    file = f.read.gsub(/<br>/, "\n")
     Nokogiri::HTML.parse(file, nil, "utf-8")
   end
 
@@ -39,6 +39,7 @@ module ScrapingWork
   end
 
   def self.detail(doc)
+    "detail"
   end
 
   def self.expired_at(doc)
