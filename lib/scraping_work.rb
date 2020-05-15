@@ -20,7 +20,8 @@ module ScrapingWork
       reward_max: reward_max,
       reward_min: reward_min,
       detail: detail(doc),
-      expired_at: expired_at(doc)
+      expired_at: expired_at(doc),
+      is_finish: is_finish(doc)
     }
   end
 
@@ -47,5 +48,9 @@ module ScrapingWork
     date_str = doc.at('//section[contains(@class, "toplevel_information")]//table/tbody/tr[4]/td').text
     date_str = "2000年1月1日" unless date_str.match(/\A\d{4}年\d{1,2}月\d{1,2}日\z/) 
     Date.strptime(date_str, "%Y年%m月%d日")
+  end
+
+  def self.is_finish(doc)
+    false
   end
 end
