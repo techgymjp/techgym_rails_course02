@@ -12,3 +12,5 @@ ja:
         site_type: タイプ  #g
         title: タイトル  #g
         url: URL  #g
+        is_finish:  終了しているか #g
+        status: ステータス

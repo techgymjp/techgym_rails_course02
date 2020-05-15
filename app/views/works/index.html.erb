@@ -8,7 +8,7 @@
       <th><%= t Work.human_attribute_name(:title) %></th>
       <th><%= t Work.human_attribute_name(:reward_min) %></th>
       <th><%= t Work.human_attribute_name(:reward_max) %></th>
-      <th><%= t Work.human_attribute_name(:expired_at) %></th>
+      <th><%= t Work.human_attribute_name(:status) %></th>
       <th></th>
     </tr>
   </thead>
@@ -35,7 +35,7 @@
 
 
 
-        <td><%= work.expired_at %></td>
+        <td><%= work.is_finish? ? "終了" : "受付中" %></td>
 
         <td>
           <%= link_to '表示', work, class: "btn btn-secondary" %>

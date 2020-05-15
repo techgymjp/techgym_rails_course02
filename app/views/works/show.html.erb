@@ -45,6 +45,12 @@
       <td><%= @work.expired_at %></td>
 
     </tr>
+   <tr>
+      <td><%= t Work.human_attribute_name(:status) %></td>
+
+      <td><%= @work.is_finish? ? "終了" : "受付中" %></td>
+
+    </tr>
   </tbody>
 </table>
 
