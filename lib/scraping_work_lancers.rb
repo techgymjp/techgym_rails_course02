@@ -38,7 +38,8 @@ module ScrapingWorkLancers
   end
 
   def self.detail(doc)
-    "detail"
+    details = doc.search('//section[contains(@class, "section-work-detail-content")]/dl[contains(@class, "c-definitionList")]').map { |dl| dl.text.strip }
+    details.join
   end
 
   def self.expired_at(doc)

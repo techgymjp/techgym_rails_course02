@@ -19,5 +19,6 @@ namespace :scraping do
     url = "https://www.lancers.jp/work/detail/2908104"
     doc = ScrapingWorkLancers.get_work_doc(url)
     p ScrapingWorkLancers.is_finish(doc)
+    p ScrapingWorkLancers.detail(doc)
   end
 end
