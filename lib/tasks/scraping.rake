@@ -16,5 +16,8 @@ namespace :scraping do
   desc "ランサーズの情報取得"
   task fetch_lancers: :environment do
     ScrapingWorkLancers.sample_function
+    url = "https://www.lancers.jp/work/detail/2908104"
+    doc = ScrapingWorkLancers.get_work_doc(url)
+    p ScrapingWorkLancers.is_finish(doc)
   end
 end
