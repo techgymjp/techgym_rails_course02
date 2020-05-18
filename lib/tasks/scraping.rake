@@ -1,4 +1,5 @@
 require "#{Rails.root}/lib/scraping_work"
+require "#{Rails.root}/lib/scraping_work_lancers"
 
 namespace :scraping do
   desc "クラウドワークスの情報取得"
@@ -10,5 +11,10 @@ namespace :scraping do
     p doc.at('//*[@id="job_offer_detail"]//h1/text()').text.strip
     work_hash = ScrapingWork.fetch_work(url, doc)
     Work.create!(work_hash)
+  end
+
+  desc "ランサーズの情報取得"
+  task fetch_lancers: :environment do
+    ScrapingWorkLancers.sample_function
   end
 end
