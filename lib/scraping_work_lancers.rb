@@ -45,7 +45,7 @@ module ScrapingWorkLancers
     nil
   end
 
-  def self.is_finish
+  def self.is_finish(doc)
     false
   end
 end
