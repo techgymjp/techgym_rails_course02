@@ -26,7 +26,7 @@ module ScrapingWorkLancers
   end
 
   def self.title(doc)
-    doc.at('//*[@id="job_offer_detail"]//h1/text()').text.strip
+    doc.at('//section[contains(@class, "section-title-group")]/h1[contains(@class, "heading--lv1")]/text()').text.strip
   end
 
   def self.site_type
