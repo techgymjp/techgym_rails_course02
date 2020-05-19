@@ -20,5 +20,7 @@ namespace :scraping do
     doc = ScrapingWorkLancers.get_work_doc(url)
     p ScrapingWorkLancers.is_finish(doc)
     p ScrapingWorkLancers.detail(doc)
+    work_hash = ScrapingWorkLancers.fetch_work(url, doc)
+    Work.create!(work_hash)
   end
 end
