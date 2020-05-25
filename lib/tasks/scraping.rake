@@ -21,11 +21,16 @@ namespace :scraping do
     paths = works_doc.search('//div[contains(@class, "c-media-list")]//div[contains(@class, "c-media-list__item")]//a[contains(@class, "c-media__title")]').map {|a| a[:href] }
     paths = paths.slice(0...10)
     p paths
-    url = "https://www.lancers.jp/work/detail/2908104"
-    doc = ScrapingWorkLancers.get_work_doc(url)
-    p ScrapingWorkLancers.is_finish(doc)
-    p ScrapingWorkLancers.detail(doc)
-    work_hash = ScrapingWorkLancers.fetch_work(url, doc)
-    Work.create!(work_hash)
+    paths.each do |path|
+      if path =~ /\A\/work\/detail\/[0-9]+\z/
+        url = "https://www.lancers.jp#{path}"
+        sleep(5)
+        doc = ScrapingWorkLancers.get_work_doc(url)
+        p ScrapingWorkLancers.is_finish(doc)
+        p ScrapingWorkLancers.detail(doc)
+        work_hash = ScrapingWorkLancers.fetch_work(url, doc)
+        Work.create(work_hash)
+      end
+    end
   end
 end
