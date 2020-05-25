@@ -16,6 +16,10 @@ namespace :scraping do
   desc "ランサーズの情報取得"
   task fetch_lancers: :environment do
     ScrapingWorkLancers.sample_function
+    works_url = "https://www.lancers.jp/work/search?keyword=Rails&page=1"
+    works_doc = ScrapingWorkLancers.get_work_doc(works_url)
+    paths = works_doc.search('//div[contains(@class, "c-media-list")]//div[contains(@class, "c-media-list__item")]//a[contains(@class, "c-media__title")]').map {|a| a[:href] }
+    p paths
     url = "https://www.lancers.jp/work/detail/2908104"
     doc = ScrapingWorkLancers.get_work_doc(url)
     p ScrapingWorkLancers.is_finish(doc)
