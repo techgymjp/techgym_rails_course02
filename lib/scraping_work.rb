@@ -1,4 +1,4 @@
-module ScrapingWork
+class ScrapingWork
 
   def self.sample_function
     p "モジュールが正しく読み込まれています。"
