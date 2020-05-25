@@ -29,7 +29,11 @@ namespace :scraping do
         p ScrapingWorkLancers.is_finish(doc)
         p ScrapingWorkLancers.detail(doc)
         work_hash = ScrapingWorkLancers.fetch_work(url, doc)
-        Work.create(work_hash)
+        if work = Work.find_by(url: url)
+          work.update(work_hash)
+        else
+          Work.create(work_hash)
+        end
       end
     end
   end
