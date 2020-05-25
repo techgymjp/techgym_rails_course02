@@ -51,6 +51,18 @@
       <td><%= @work.is_finish? ? "終了" : "受付中" %></td>
 
     </tr>
+   <tr>
+      <td><%= t Work.human_attribute_name(:created_at) %></td>
+
+      <td><%= l @work.created_at, format: :long %></td>
+
+    </tr>
+   <tr>
+      <td><%= t Work.human_attribute_name(:updated_at) %></td>
+
+      <td><%= l @work.updated_at, format: :long %></td>
+
+    </tr>
   </tbody>
 </table>
 

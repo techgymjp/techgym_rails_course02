@@ -14,3 +14,5 @@ ja:
         url: URL  #g
         is_finish:  終了しているか #g
         status: ステータス
+        created_at: 作成日
+        updated_at: 更新日
