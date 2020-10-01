@@ -2,7 +2,7 @@
 
 <目標>クローラー開発のお仕事をしてちょこっと副業にする。
 
-<まなぶこと>
+<学ぶこと>
 
 ・環境構築（AWS Cloud9）
 
@@ -19,6 +19,8 @@
 ## オープン講座
 テキスト 
 https://github.com/techgymjp/techgym_rails_course02/blob/master/RailsCourse02_1.pdf
+
+実行環境(Cloud9) https://ap-northeast-1.console.aws.amazon.com/cloud9
 
 動画(環境構築) 
 
