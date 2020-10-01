@@ -1,24 +1,36 @@
-# README
+# テックジム Railsコース 第二章 「クローラーを作ろう」
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<目標>クローラー開発のお仕事をしてちょこっと副業にする。
 
-Things you may want to cover:
+<まなぶこと>
 
-* Ruby version
+・環境構築（AWS Cloud9）
 
-* System dependencies
+・Ruby on Railsの基本開発
 
-* Configuration
+・クローラー作成
 
-* Database creation
+・スクレイピング開発
 
-* Database initialization
+・データベースへ保存
 
-* How to run the test suite
+・管理画面で確認
 
-* Services (job queues, cache servers, search engines, etc.)
+## オープン講座
+テキスト 
+https://github.com/techgymjp/techgym_rails_course02/blob/master/RailsCourse02_1.pdf
 
-* Deployment instructions
+動画(環境構築) 
 
-* ...
+https://www.youtube.com/watch?v=J4PA4YIHW_w&list=PL9u04bPGBuUPVseIvQqOCeOydgczDrmhe&index=36&t=3s
+
+動画(オープン講座) 
+
+https://www.youtube.com/watch?v=-uWf99V6KJQ&list=PL9u04bPGBuUPVseIvQqOCeOydgczDrmhe&index=37
+
+オープン講座アンケート
+https://forms.gle/EvFhUKnpZhxKUp8q8
+
+Railsコース紹介ページ
+https://techgym.jp/?p=18356
+
