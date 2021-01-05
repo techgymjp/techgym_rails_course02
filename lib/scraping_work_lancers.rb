@@ -35,7 +35,7 @@ module ScrapingWorkLancers
 
   def self.reward(doc)
     description = doc.at('/html/head/meta[@name="description"]')[:content]
-    reward_reg = /(?<=報酬：).*?(?=）)/
+    reward_reg = /(?<=報酬：).*?(?=\))/
     return nil, nil unless description =~ reward_reg
     reward_range = description.match(reward_reg)[0].delete("円 ").split('〜')
     min = reward_range[0] =~ /\A[0-9]+\z/ ? reward_range[0] : nil
