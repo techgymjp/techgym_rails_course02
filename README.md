@@ -16,23 +16,6 @@
 
 ・管理画面で確認
 
-## オープン講座
-テキスト 
-https://github.com/techgymjp/techgym_rails_course02/blob/master/RailsCourse02_1.pdf
-
-実行環境(Cloud9) https://ap-northeast-1.console.aws.amazon.com/cloud9
-
-動画(環境構築) 
-
-https://www.youtube.com/watch?v=J4PA4YIHW_w&list=PL9u04bPGBuUPVseIvQqOCeOydgczDrmhe&index=36&t=3s
-
-動画(オープン講座) 
-
-https://www.youtube.com/watch?v=-uWf99V6KJQ&list=PL9u04bPGBuUPVseIvQqOCeOydgczDrmhe&index=37
-
-オープン講座アンケート
-https://forms.gle/EvFhUKnpZhxKUp8q8
-
 Railsコース紹介ページ
 https://techgym.jp/?p=18356
 
