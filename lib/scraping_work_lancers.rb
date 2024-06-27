@@ -38,7 +38,7 @@ module ScrapingWorkLancers
   end
 
   def self.detail(doc)
-    details = doc.search('//section[contains(@class, "section-work-detail-content")]/dl[contains(@class, "c-definitionList")]').map { |dl| dl.text.strip }
+    details = doc.search('//dl[contains(@class, "c-definition-list")]/dd[contains(@class, "c-definition-list__description")]').map { |dd| dd.text.strip }
     details.join
   end
 
