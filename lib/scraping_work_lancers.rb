@@ -26,7 +26,7 @@ module ScrapingWorkLancers
   end
 
   def self.title(doc)
-    doc.at('//section[contains(@class, "section-title-group")]/h1[contains(@class, "heading--lv1")]/text()').text.strip
+    doc.at('//h1[contains(@class, "c-heading--lv1")]').text.strip
   end
 
   def self.site_type
