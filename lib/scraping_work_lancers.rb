@@ -46,7 +46,7 @@ module ScrapingWorkLancers
   end
 
   def self.is_finish(doc)
-    status = doc.at('//section[contains(@class, "section-title-group")]/div[contains(@class, "section-title-group__status")]')
+    status = doc.at('//div[contains(@class, "p-work-detail-client__is-completed")]')
     status.present? && status.text.include?("終了")
   end
 end
