@@ -13,12 +13,11 @@ class ScrapingWorkLancers < ScrapingWork
   end
 
   def self.reward(doc)
-    description = doc.at('/html/head/meta[@name="description"]')[:content]
-    reward_reg = /(?<=報酬：).*?(?=\))/
-    return nil, nil unless description =~ reward_reg
-    reward_range = description.match(reward_reg)[0].delete("円 ").split('〜')
-    min = reward_range[0] =~ /\A[0-9]+\z/ ? reward_range[0] : nil
-    max = reward_range[1] =~ /\A[0-9]+\z/ ? reward_range[1] : nil
+    reward_text = doc.at('.detail-order__content__price')&.text
+    reward_text ||= ""
+    numbers = reward_text.scan(/\d{1,3}(?:,\d{3})*(?:\.\d+)?/).map { |num| num.tr(',', '').to_i }
+    min = numbers[0] if numbers.size >= 1
+    max = numbers[1] if numbers.size >= 2
     return min, max
   end
 
