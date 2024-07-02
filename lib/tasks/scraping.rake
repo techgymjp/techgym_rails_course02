@@ -18,7 +18,7 @@ namespace :scraping do
     ScrapingWorkLancers.sample_function
     works_url = "https://www.lancers.jp/work/search?keyword=Rails&page=1"
     works_doc = ScrapingWorkLancers.get_work_doc(works_url)
-    paths = works_doc.search('//div[contains(@class, "c-media-list")]//div[contains(@class, "c-media-list__item")]//a[contains(@class, "c-media__title")]').map {|a| a[:href] }
+    paths = works_doc.search('//a[contains(@class, "p-search-job-media__title") and contains(@class, "c-media__title")]').map { |a| a[:href] }
     paths = paths.slice(0...10)
     p paths
     url = "https://www.lancers.jp/work/detail/2908104"
